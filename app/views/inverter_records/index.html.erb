@@ -1,0 +1,47 @@
+<div>
+  <div class="jumbotron">
+    <h1 class="text-center"> Productions </h1>
+  </div>
+
+  <div class="container">
+        <form class="form row" action="/inverter_records/import" method="post" enctype="multipart/form-data">
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <div class="c ustom-file col-md-8">
+            <input type="file" class="" id="file-upload" accept=".csv" name="datafile" required>
+              <label class="custom-file-label" for="file-upload">Sélectionner un fichier de production</label>
+          </div>
+
+          <div class="col-md-4">
+            <button type="submit" class="btn btn-block btn-primary"> Envoyer </button>
+          </div>
+        </form>
+
+        <form id="date-form" class="form" action="/" method="get" style="margin-top: 50px;">
+          <label class="form-label"> Selectionnez une date </label>
+          <%= select_tag :date, options_for_select(@dates, @date), class: 'form-control' %>
+        </form>
+
+        <p class="lead"> Production totale : <%= @production_total %> </p>
+
+        <table class="table table-striped" style="margin-top: 50px;">
+          <thead class="thead-dark">
+            <tr>
+              <th> Heure </th>
+              <th> Production </th>
+            </tr>
+          </thead>
+          <% @productions_per_hours.each do |time, energy| %>
+            <tr>
+                <td> <%= time %> </td>
+                <td> <%= energy %> </td>
+            </tr>
+          <% end %>
+        </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('select[name="date"]').change(function(){
+    $('form#date-form').submit()
+  })
+</script>
