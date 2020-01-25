@@ -1,24 +1,18 @@
-# README
+#Photovo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Configuration
+- Il faut un environnement ruby, rails
+- Deux variables d'environnement sont nécessaires : `username` et `password`, constituant les identifiants d'authentification.
 
-Things you may want to cover:
+## Installation
+Cloner le projet et lancer l'application Rails
+```
+$ git clone https://github.com/arousmane/photovo
+$ cd photovo && bundle install
+$ rails s
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Architecture
+Deux modèles: 
+- `Inverter`: Représentant un onduleur
+- `InverterRecord` : Représentant les productions horaires
